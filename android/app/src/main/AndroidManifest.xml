@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tec">
+  
+  <uses_premision android:name="android.premision.INTERNET"/>
+  
+  
    <application
         android:label="tec"
         android:name="${applicationName}"
