@@ -39,6 +39,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.1.1+1
+  validators: ^3.0.0
 
 
   
@@ -70,13 +71,8 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-  #   - images/a_dot_ham.jpeg
 
 
-  # pubspec.yaml
-flutter_gen:
-  integrations:
-    flutter_svg: true
 
 
 
@@ -94,9 +90,9 @@ flutter_gen:
   fonts:
     - family: Dana
       fonts:
-        - asset: assets/fonts/DANA-BOLD.ttf
+        - asset: assets/fonts/Dana-Bold.ttf
           weight: 700
-        - asset: assets/fonts/DANA-REGULAR.ttf
+        - asset: assets/fonts/Dana-Regular.ttf
           weight: 300
   #         style: italic
   #   - family: Trajan Pro
@@ -108,3 +104,7 @@ flutter_gen:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 
+  # pubspec.yaml
+flutter_gen:
+  integrations:
+    flutter_svg: true

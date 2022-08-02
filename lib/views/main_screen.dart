@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tec/gen/assets.gen.dart';
 import 'package:tec/my_colors.dart';
+import 'package:tec/my_component.dart';
 import 'package:tec/views/profile_screen.dart';
 import 'package:tec/views/home_screen.dart';
+import 'package:tec/views/register_intro.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -10,6 +12,8 @@ class MainScreen extends StatefulWidget {
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
+
+final GlobalKey<ScaffoldState> _key = GlobalKey();
 
 class _MainScreenState extends State<MainScreen> {
   var _selectedIndexPage = 0;
@@ -21,15 +25,76 @@ class _MainScreenState extends State<MainScreen> {
 
     return SafeArea(
       child: Scaffold(
+        key: _key,
+        drawer: Drawer(
+            backgroundColor: SoildColor.scafoldbg,
+            child: Padding(
+              padding: EdgeInsets.only(right: bodyMargin, left: bodyMargin),
+              child: ListView(
+                children: [
+                  DrawerHeader(
+                      child: Image.asset(
+                    Assets.images.splash.path,
+                    scale: 3,
+                  )),
+                  const Divider(
+                    color: SoildColor.dividerColor,
+                  ),
+                  ListTile(
+                    title: Text(
+                      "پروفایل کاربری",
+                      style: textTheme.headline4,
+                    ),
+                    onTap: () {},
+                  ),
+                  const Divider(
+                    color: SoildColor.dividerColor,
+                  ),
+                  ListTile(
+                    title: Text(
+                      " درباره تک بلاگ",
+                      style: textTheme.headline4,
+                    ),
+                    onTap: () {},
+                  ),
+                  const Divider(
+                    color: SoildColor.dividerColor,
+                  ),
+                  ListTile(
+                    title: Text(
+                      " اشتراک گذاری تک بلاگ",
+                      style: textTheme.headline4,
+                    ),
+                    onTap: () {},
+                  ),
+                  const Divider(
+                    color: SoildColor.dividerColor,
+                  ),
+                  ListTile(
+                    title: Text(
+                      " تک بلاگ در گیت هاب",
+                      style: textTheme.headline4,
+                    ),
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            )),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           elevation: 0,
           backgroundColor: SoildColor.scafoldbg,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Icon(
-                Icons.menu,
-                color: Colors.black,
+              InkWell(
+                onTap: () {
+                  _key.currentState!.openDrawer();
+                },
+                child: const Icon(
+                  Icons.menu,
+                  color: Colors.black,
+                ),
               ),
               Image(
                   height: size.height / 13.6,
@@ -84,7 +149,7 @@ class BottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: 0,
+      bottom: 8,
       left: 0,
       right: 0,
       child: Container(
@@ -113,7 +178,10 @@ class BottomNavigation extends StatelessWidget {
                         color: Colors.white,
                       )),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const RegisterPage()));
+                      },
                       icon: ImageIcon(
                         AssetImage(Assets.icons.w.path),
                         color: Colors.white,

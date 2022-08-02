@@ -4,6 +4,8 @@ import 'package:tec/models/fake_data.dart';
 import 'package:tec/my_colors.dart';
 import 'package:tec/my_strings.dart';
 
+import '../my_component.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
     Key? key,
@@ -300,34 +302,7 @@ class HomePageTagList extends StatelessWidget {
             return Padding(
               padding:
                   EdgeInsets.fromLTRB(0, 8, index == 0 ? bodyMargin : 15, 8),
-              child: Container(
-                  height: 60,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(24)),
-                    gradient: LinearGradient(
-                        colors: GradientColor.tags,
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
-                    child: Row(
-                      children: [
-                        ImageIcon(
-                          AssetImage(Assets.icons.hashtag.path),
-                          color: Colors.white,
-                          size: 16,
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        Text(
-                          tagList[index].title,
-                          style: textTheme.headline2,
-                        )
-                      ],
-                    ),
-                  )),
+              child: MainTags(textTheme: textTheme, index: index),
             );
           })),
     );

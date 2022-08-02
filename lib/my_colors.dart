@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class SoildColor {
   static const Color titleColor = Color.fromARGB(255, 40, 107, 184);
+  static const Color hintTextColor = Color.fromARGB(255, 219, 219, 219);
   static const Color primeriColor = Color.fromARGB(255, 67, 4, 87);
   static const Color posterTitle = Color.fromARGB(255, 255, 255, 255);
   static const Color posterSubTitle = Color.fromARGB(200, 255, 255, 255);
@@ -17,6 +18,7 @@ class SoildColor {
   static const Color subText = Color.fromARGB(255, 197, 197, 197);
   static const Color seeMore = Color.fromARGB(255, 40, 107, 184);
   static const Color dividerColor = Color.fromARGB(255, 112, 112, 112);
+  static const Color surFace = Color.fromARGB(255, 242, 242, 242);
 }
 
 class GradientColor {
