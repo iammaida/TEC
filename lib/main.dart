@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
+import 'package:tec/componenets/my_colors.dart';
 import 'package:tec/views/main_screen.dart';
 import 'package:tec/views/profile_screen.dart';
 import 'package:tec/views/register_intro.dart';
 import 'package:tec/views/splash_screen.dart';
-
-import 'my_colors.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
 
-    return MaterialApp(
+    return GetMaterialApp(
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -103,7 +103,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       // home: SplashScreen(),
-      home: const RegisterPage(),
+      home: const MainScreen(),
     );
   }
 }

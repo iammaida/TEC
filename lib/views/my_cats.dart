@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tec/componenets/my_colors.dart';
+import 'package:tec/componenets/my_component.dart';
+import 'package:tec/componenets/my_strings.dart';
 import 'package:tec/gen/assets.gen.dart';
 import 'package:tec/models/data_models.dart';
 import 'package:tec/models/fake_data.dart';
-import 'package:tec/my_colors.dart';
-import 'package:tec/my_strings.dart';
-
-import '../my_component.dart';
 
 class MyCats extends StatefulWidget {
   const MyCats({super.key});
@@ -54,7 +53,7 @@ class _MyCatsState extends State<MyCats> {
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
                       hintText: "نام و نام خانوادگی",
-                      helperStyle: textTheme.subtitle1,
+                      helperStyle: textTheme.headline6,
                     ),
                   ),
                   const SizedBox(

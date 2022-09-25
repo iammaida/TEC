@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tec/componenets/my_colors.dart';
 import 'package:tec/gen/assets.gen.dart';
-import 'package:tec/my_colors.dart';
-import 'package:tec/my_component.dart';
+
 import 'package:tec/views/profile_screen.dart';
 import 'package:tec/views/home_screen.dart';
 import 'package:tec/views/register_intro.dart';
@@ -37,13 +37,10 @@ class _MainScreenState extends State<MainScreen> {
                     Assets.images.splash.path,
                     scale: 3,
                   )),
-                  const Divider(
-                    color: SoildColor.dividerColor,
-                  ),
                   ListTile(
                     title: Text(
                       "پروفایل کاربری",
-                      style: textTheme.headline4,
+                      style: textTheme.headline5,
                     ),
                     onTap: () {},
                   ),
@@ -53,7 +50,7 @@ class _MainScreenState extends State<MainScreen> {
                   ListTile(
                     title: Text(
                       " درباره تک بلاگ",
-                      style: textTheme.headline4,
+                      style: textTheme.headline5,
                     ),
                     onTap: () {},
                   ),
@@ -63,7 +60,7 @@ class _MainScreenState extends State<MainScreen> {
                   ListTile(
                     title: Text(
                       " اشتراک گذاری تک بلاگ",
-                      style: textTheme.headline4,
+                      style: textTheme.headline5,
                     ),
                     onTap: () {},
                   ),
@@ -73,7 +70,7 @@ class _MainScreenState extends State<MainScreen> {
                   ListTile(
                     title: Text(
                       " تک بلاگ در گیت هاب",
-                      style: textTheme.headline4,
+                      style: textTheme.headline5,
                     ),
                     onTap: () {},
                   ),

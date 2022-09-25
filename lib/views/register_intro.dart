@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tec/componenets/my_strings.dart';
 import 'package:tec/gen/assets.gen.dart';
-import 'package:tec/my_strings.dart';
 import 'package:tec/views/my_cats.dart';
 import 'package:validators/validators.dart';
 
@@ -128,8 +128,9 @@ Future<dynamic> _activateCodeBottomSheet(
                   padding: const EdgeInsets.all(24),
                   child: TextField(
                     onChanged: (value) {
-                      print(
-                          value + " isEmail is= " + isEmail(value).toString());
+                      print(value +
+                          " isEmail is= " +
+                          isNumeric(value).toString());
                     },
                     style: textTheme.headline6,
                     textAlign: TextAlign.center,
