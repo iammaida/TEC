@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:tec/componenets/api_constant.dart';
 import 'package:tec/componenets/my_colors.dart';
+import 'package:tec/componenets/my_component.dart';
+import 'package:tec/componenets/my_strings.dart';
 import 'package:tec/gen/assets.gen.dart';
+import 'package:tec/services/dio_service.dart';
 
 import 'package:tec/views/profile_screen.dart';
 import 'package:tec/views/home_screen.dart';
 import 'package:tec/views/register_intro.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-class _MainScreenState extends State<MainScreen> {
-  var _selectedIndexPage = 0;
+class MainScreen extends StatelessWidget {
+  RxInt _selectedIndexPage = 0.obs;
+
+  MainScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    DioService().getMethod(ApiConstant.getHomeItems);
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
     double bodyMargin = size.width / 10;
@@ -42,7 +44,9 @@ class _MainScreenState extends State<MainScreen> {
                       "پروفایل کاربری",
                       style: textTheme.headline5,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      _selectedIndexPage.value = 2;
+                    },
                   ),
                   const Divider(
                     color: SoildColor.dividerColor,
@@ -62,7 +66,9 @@ class _MainScreenState extends State<MainScreen> {
                       " اشتراک گذاری تک بلاگ",
                       style: textTheme.headline5,
                     ),
-                    onTap: () {},
+                    onTap: () async {
+                      await Share.share(MyStrings.shareText);
+                    },
                   ),
                   const Divider(
                     color: SoildColor.dividerColor,
@@ -72,7 +78,9 @@ class _MainScreenState extends State<MainScreen> {
                       " تک بلاگ در گیت هاب",
                       style: textTheme.headline5,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      mylaunchUrl(MyStrings.urlTechBlogGitHub);
+                    },
                   ),
                 ],
               ),
@@ -106,22 +114,22 @@ class _MainScreenState extends State<MainScreen> {
         body: Stack(
           children: [
             Positioned.fill(
-                child: IndexedStack(
-              index: _selectedIndexPage,
-              children: [
-                HomeScreen(
-                    size: size, textTheme: textTheme, bodyMargin: bodyMargin),
-                ProfileScreen(
-                    size: size, textTheme: textTheme, bodyMargin: bodyMargin),
-              ],
+                child: Obx(
+              () => IndexedStack(
+                index: _selectedIndexPage.value,
+                children: [
+                  HomeScreen(
+                      size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                  ProfileScreen(
+                      size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                ],
+              ),
             )),
             BottomNavigation(
               size: size,
               bodyMargin: bodyMargin,
               changescreen: (int value) {
-                setState(() {
-                  _selectedIndexPage = value;
-                });
+                _selectedIndexPage.value = value;
               },
             ),
           ],

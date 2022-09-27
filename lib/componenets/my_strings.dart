@@ -1,5 +1,7 @@
 class MyStrings {
   static const String viewHotestBlog = "مشاهده داغ ترین نوشته ها";
+  static const String urlTechBlogGitHub =
+      "https://github.com/sasansafari/techblog";
   static const String viewHotestPodcasts = "مشاهده داغ ترین پادکست ها";
   static const String relatedArticle = "نوشته های مرتبط";
   static const String submitArticle = "ارسال مقاله";
@@ -19,4 +21,9 @@ class MyStrings {
 
 برای ارسال مطلب و پادکست باید حتما 
 ثبت نام کنی """;
+
+  static const String shareText =
+      """ من از تک بلاگ استفاده می‌کنم. خیلی باحاله، توم داشته باشش.\n
+www.sasansafari.com
+""";
 }
