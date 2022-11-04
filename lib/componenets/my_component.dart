@@ -1,7 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:tec/componenets/my_colors.dart';
+import 'package:tec/componenets/text_style.dart';
+import 'package:tec/contoroller/home_screen_controller.dart';
 import 'package:tec/gen/assets.gen.dart';
 import 'package:tec/models/fake_data.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -59,7 +63,7 @@ class MainTags extends StatelessWidget {
                 width: 8,
               ),
               Text(
-                tagList[index].title,
+                Get.find<HomeScreenController>().tagList[index].title!,
                 style: textTheme.headline2,
               )
             ],
@@ -118,4 +122,53 @@ mylaunchUrl(String url) async {
   } else {
     log("could not launch $url");
   }
+}
+
+class loading extends StatelessWidget {
+  const loading({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const SpinKitFadingCube(
+      color: SoildColor.primeriColor,
+      size: 32,
+    );
+  }
+}
+
+PreferredSize appBar(String title) {
+  return PreferredSize(
+    preferredSize: Size.fromHeight(60),
+    child: Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Center(
+              child: Text(
+                title,
+                style: appBarTextStyle,
+              ),
+            ),
+          ),
+        ],
+        leading: Padding(
+          padding: const EdgeInsets.only(right: 16),
+          child: Container(
+            height: 40,
+            width: 40,
+            decoration: BoxDecoration(
+                color: SoildColor.primeriColor.withBlue(100),
+                shape: BoxShape.circle),
+            child: Icon(Icons.keyboard_arrow_right_outlined),
+          ),
+        ),
+      ),
+    ),
+  );
 }

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:localization/localization.dart';
 import 'package:tec/componenets/my_colors.dart';
-import 'package:tec/views/main_screen.dart';
-import 'package:tec/views/profile_screen.dart';
+import 'package:tec/views/article_list_screen.dart';
+import 'package:tec/views/main_screen/main_screen.dart';
+import 'package:tec/views/main_screen/single.dart';
 import 'package:tec/views/register_intro.dart';
 import 'package:tec/views/splash_screen.dart';
 
@@ -27,15 +29,8 @@ class MyApp extends StatelessWidget {
     var textTheme = Theme.of(context).textTheme;
 
     return GetMaterialApp(
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('fa', ''), // farsi, no country code
-      ],
-      title: 'Flutter Demo',
+      locale: const Locale('fa'),
+      title: 'TEC',
       theme: ThemeData(
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
@@ -103,7 +98,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       // home: SplashScreen(),
-      home: MainScreen(),
+      home: ArticleListScreen(),
     );
   }
 }

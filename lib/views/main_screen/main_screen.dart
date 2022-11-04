@@ -7,9 +7,9 @@ import 'package:tec/componenets/my_component.dart';
 import 'package:tec/componenets/my_strings.dart';
 import 'package:tec/gen/assets.gen.dart';
 import 'package:tec/services/dio_service.dart';
+import 'package:tec/views/main_screen/home_screen.dart';
+import 'package:tec/views/main_screen/profile_screen.dart';
 
-import 'package:tec/views/profile_screen.dart';
-import 'package:tec/views/home_screen.dart';
 import 'package:tec/views/register_intro.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
@@ -20,7 +20,6 @@ class MainScreen extends StatelessWidget {
   MainScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    DioService().getMethod(ApiConstant.getHomeItems);
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
     double bodyMargin = size.width / 10;

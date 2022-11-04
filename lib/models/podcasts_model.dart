@@ -1,4 +1,6 @@
-class TopPodcastsModel {
+import 'package:tec/componenets/api_constant.dart';
+
+class PodcastModel {
   String? id;
   String? title;
   String? poster;
@@ -6,7 +8,7 @@ class TopPodcastsModel {
   String? view;
   String? createdAt;
 
-  TopPodcastsModel({
+  PodcastModel({
     required this.id,
     required this.title,
     required this.poster,
@@ -15,10 +17,10 @@ class TopPodcastsModel {
     required this.createdAt,
   });
 
-  TopPodcastsModel.fromJson(Map<String, dynamic> element) {
+  PodcastModel.fromJson(Map<String, dynamic> element) {
     id = element["id"];
     title = element["title"];
-    poster = element["poster"];
+    poster = ApiConstant.hostDlUrl + element["poster"];
     publisher = element["publisher"];
     view = element["view"];
 
