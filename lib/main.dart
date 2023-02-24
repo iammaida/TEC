@@ -98,7 +98,9 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       // home: SplashScreen(),
-      home: ArticleListScreen(),
+      home: ArticleListScreen(
+        title: "مقالات جدید",
+      ),
     );
   }
 }

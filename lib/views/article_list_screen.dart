@@ -1,9 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tec/componenets/my_colors.dart';
 import 'package:tec/componenets/my_component.dart';
-import 'package:tec/componenets/text_style.dart';
 import 'package:tec/contoroller/list_article_controller.dart';
 import 'package:tec/contoroller/single_article_controller.dart';
 import 'package:tec/views/main_screen/single.dart';
@@ -13,14 +11,16 @@ class ArticleListScreen extends StatelessWidget {
   SingleArticleController singleArticleController =
       Get.put(SingleArticleController());
 
-  ArticleListScreen({Key? key}) : super(key: key);
+  String title;
+  ArticleListScreen({required this.title, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print('ok');
     var TextTheme = Theme.of(context).textTheme;
     return SafeArea(
         child: Scaffold(
-      appBar: appBar("مقالات جدید"),
+      appBar: appBar(title),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SizedBox(
@@ -31,12 +31,8 @@ class ArticleListScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    singleArticleController.id.value =
-                        int.parse(articleController.articleList[index].id!);
-
-                    Get.to(
-                      Single(),
-                    );
+                    singleArticleController.getArticlrInfo(
+                        articleController.articleList[index].id!);
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -60,7 +56,7 @@ class ArticleListScreen extends StatelessWidget {
                               );
                             },
                             placeholder: (context, url) {
-                              return loading();
+                              return const loading();
                             },
                             errorWidget: (context, url, error) {
                               return const Icon(
@@ -71,7 +67,7 @@ class ArticleListScreen extends StatelessWidget {
                             },
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 16,
                         ),
                         Column(
@@ -85,7 +81,7 @@ class ArticleListScreen extends StatelessWidget {
                                 maxLines: 2,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 16,
                             ),
                             Row(
@@ -93,15 +89,14 @@ class ArticleListScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   articleController.articleList[index].author!,
-                                  style: TextTheme.caption,
+                                  style: TextTheme.bodySmall,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 20,
                                 ),
                                 Text(
-                                  articleController.articleList[index].view! +
-                                      "بازدید ",
-                                  style: TextTheme.caption,
+                                  "${articleController.articleList[index].view!}بازدید ",
+                                  style: TextTheme.bodySmall,
                                 ),
                               ],
                             )

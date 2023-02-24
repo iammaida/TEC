@@ -4,6 +4,7 @@ import 'package:tec/models/article_info_model.dart';
 import 'package:tec/models/article_model.dart';
 import 'package:tec/models/tag_model.dart';
 import 'package:tec/services/dio_service.dart';
+import 'package:tec/views/main_screen/single.dart';
 
 class SingleArticleController extends GetxController {
   RxBool loading = false.obs;
@@ -17,7 +18,8 @@ class SingleArticleController extends GetxController {
     super.onInit();
   }
 
-  getArticlrInfo() async {
+  getArticlrInfo(var id) async {
+    articleInfoModel = ArticleInfoModel().obs;
     loading.value = true;
 
     var userId = '';
@@ -42,5 +44,6 @@ class SingleArticleController extends GetxController {
     response.data['related'].forEach((element) {
       releatedList.add(ArticleModel.fromJson(element));
     });
+    Get.to(Single());
   }
 }
